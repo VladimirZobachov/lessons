@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+void BubbleSort(int *array, int size, bool (*foo)(int, int)) {
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size; j++) {
+			if (foo(*(array + i), *(array + j))) {
+				int temp = *(array + i);
+				*(array + i) = *(array + j);
+				*(array + j) = temp;
+			}
+		}
+	}
+
+}
+
+bool po_vozr(int a, int b) {
+	return a < b;
+}
+
+bool po_ub(int a, int b) {
+	return a > b;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+
+	int array[10] = { 9,2,3,4,5,6,7,8,10,11 };
+	BubbleSort(array, 10, po_ub);
+
+	for (int i = 0; i < 10; ++i)
+		cout << array[i] << ' ';
+	
+	system("pause > nul");
+	return 0;
+
+}
